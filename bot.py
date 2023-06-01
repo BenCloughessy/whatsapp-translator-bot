@@ -11,7 +11,6 @@ chat = ChatOpenAI(temperature=0.5, model_name="gpt-3.5-turbo")
 
 @app.route('/webhook', methods=['POST'])
 def whatsapp_webhook():
-    # from_number = request.values.get('From', '')
 
     # Extract the message
     incoming_message = request.values.get('Body', '')
@@ -19,7 +18,7 @@ def whatsapp_webhook():
     # Define the prompt
     prompt = PromptTemplate(
         input_variables=["message"],
-        template = "JSON translate '{message}': English if Portuguese, else Portuguese. Message: {message} "
+        template = "Translate '{message}': English if Portuguese, else Portuguese. Message: {message} "
     )
 
     # Translate the message
